@@ -1,0 +1,26 @@
+{
+  "name": "clipper-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "clipper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node clipper.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cwilsonn/clipper-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cwilsonn/clipper-test/issues"
+  },
+  "homepage": "https://github.com/cwilsonn/clipper-test#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "shelljs": "^0.8.5",
+    "uuid": "^9.0.0"
+  }
+}
