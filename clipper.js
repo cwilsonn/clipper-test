@@ -43,6 +43,10 @@ const app = express();
 app.use(cors());
 
 // App routes
+app.get('/test', (req, res) => {
+    res.send('Hello World!');
+});
+
 app.get('/', (req, res) => {
     const query = req.query;
 
