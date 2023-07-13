@@ -9,6 +9,8 @@ const cors = require('cors');
 const express = require('express');
 
 // Constants
+const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT || 3000;
 // Clip camera IDs - these correspond to the EXACT name of the camera in the iPostSports switchboard URL schema.
 // for example, lahs-bb-cam20 corresponds to https://switchboard.ipostsports.net:8443/live/lahs-bb-cam20/index.m3u8
 const CLIP_CAMERAS = [
@@ -89,6 +91,6 @@ app.get('/', (req, res) => {
 });
 
 // Server init
-app.listen(3002, () => {
-    console.log('Server running on port 3002');
+app.listen(PORT, HOST, () => {
+    console.log(`Server running on port ${PORT}`);
 });
