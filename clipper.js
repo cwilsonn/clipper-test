@@ -86,5 +86,5 @@ app.get('/', (req, res) => {
 
 // Server init
 app.listen(3002, () => {
-    console.log('Server running on port 3001');
+    console.log('Server running on port 3002');
 });
