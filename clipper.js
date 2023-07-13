@@ -85,6 +85,6 @@ app.get('/', (req, res) => {
 });
 
 // Server init
-app.listen(3001, () => {
+app.listen(3002, () => {
     console.log('Server running on port 3001');
 });
