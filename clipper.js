@@ -46,15 +46,22 @@ const app = express();
 // App middlewares
 app.use(cors());
 
+app.use((err, _req, res, _next) => {
+    console.error(err);
+    res.status(500).send('Internal server error');
+});
+
 // App routes
 app.get('/', (req, res) => {
     res.json({
-        message: 'Hello World!',
+        message: 'Index route',
     });
 });
 
 app.get('/test', (req, res) => {
-    res.send('Hello World!');
+    res.json({
+        message: 'Hello World!'
+    });
 });
 
 app.get('/clipper', (req, res) => {
@@ -96,9 +103,14 @@ app.get('/clipper', (req, res) => {
     //     + ath_id +
     //     '" --form title="" --form category="N" --form authToken="MH5QlMiZ5A6Udmw" --form ipost="N"'
     // );
+
+    res.json({
+        message: 'Clipper route',
+    })
 });
 
 // Server init
-app.listen(PORT, HOST, () => {
+app.listen(PORT, HOST, (err) => {
+    if (err) return console.error(err);
     console.log(`Server running on port ${PORT}`);
 });
