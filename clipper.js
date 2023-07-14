@@ -47,11 +47,17 @@ const app = express();
 app.use(cors());
 
 // App routes
+app.get('/', (req, res) => {
+    res.json({
+        message: 'Hello World!',
+    });
+});
+
 app.get('/test', (req, res) => {
     res.send('Hello World!');
 });
 
-app.get('/', (req, res) => {
+app.get('/clipper', (req, res) => {
     const query = req.query;
 
     console.log(query);
