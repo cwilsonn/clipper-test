@@ -11,8 +11,8 @@ const express = require('express');
 require('dotenv').config();
 
 // Constants
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
 // Clip camera IDs - these correspond to the EXACT name of the camera in the iPostSports switchboard URL schema.
 // for example, lahs-bb-cam20 corresponds to https://switchboard.ipostsports.net:8443/live/lahs-bb-cam20/index.m3u8
 const CLIP_CAMERAS = [
@@ -112,5 +112,5 @@ app.get('/clipper', (req, res) => {
 // Server init
 app.listen(PORT, HOST, (err) => {
     if (err) return console.error(err);
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on ${HOST}:${PORT}`);
 });
