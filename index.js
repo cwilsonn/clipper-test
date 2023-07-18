@@ -106,6 +106,8 @@ app.get('/clipper', (req, res) => {
 
     res.json({
         message: 'Clipper route',
+        cam,
+        ath_id,
     })
 });
 
