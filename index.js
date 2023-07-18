@@ -46,28 +46,22 @@ const app = express();
 // App middlewares
 app.use(cors());
 
+// Error handler
 app.use((err, _req, res, _next) => {
     console.error(err);
     res.status(500).send('Internal server error');
 });
 
 // App routes
-app.get('/', (req, res) => {
-    res.json({
-        message: 'Index route',
-    });
-});
-
+// TODO@Peter - this can be removed, it's just a test route
 app.get('/test', (req, res) => {
     res.json({
-        message: 'Hello World!'
+        message: 'Test route',
     });
 });
 
-app.get('/clipper', (req, res) => {
+app.get('/', (req, res) => {
     const query = req.query;
-
-    console.log(query);
 
     // Cam param coorelates to a CLIP_CAMERAS value
     // ath_id param coorelates to a iPostSports Athlete ID
@@ -89,26 +83,25 @@ app.get('/clipper', (req, res) => {
     const { v4: uuidv4 } = uuid;
     let filename = uuidv4() + '.mp4';
 
-    console.log('cam', cam);
-    console.log('ath_id', ath_id);
-    console.log('filename: ', filename);
-
     // Execute shell script for clipper
+    // TODO@Peter - this is where you need to ensure your shell code is working correctly
     // shell.exec(
-    //     'node cli.js -c 5 -o /static/uploads/'
+    //     'node cli.js -c 5 -o /home/peter/uploads/'
     //     + filename
-    //     + `https://switchboard.ipostsports.net:8443/live/${cam}/index.m3u8; curl --location http://localhost:3001 --form file=@"/static/uploads/"`
+    //     + `https://switchboard.ipostsports.net:8443/live/${cam}/index.m3u8; curl --location https://media-prod.ipostsports.net:3001 --form file=@"/home/peter/uploads/"`
     //     + filename
     //     + ' --form id="'
     //     + ath_id +
     //     '" --form title="" --form category="N" --form authToken="MH5QlMiZ5A6Udmw" --form ipost="N"'
     // );
 
+    // Test response for now - this should be replaced with a status code based on the response from the shell script. Either 200 and a success message or 500 and an error message.
+    // Response schema should include the status and message properties with their corresponding values.
     res.json({
         message: 'Clipper route',
         cam,
         ath_id,
-    })
+    });
 });
 
 // Server init
