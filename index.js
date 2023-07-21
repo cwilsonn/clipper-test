@@ -65,6 +65,8 @@ app.get('/test', (req, res) => {
 app.get('/', (req, res) => {
     const query = req.query;
 
+    console.log('Request query: ', query);
+
     // Cam param coorelates to a CLIP_CAMERAS value
     // ath_id param coorelates to a iPostSports Athlete ID
     const { cam, ath_id } = query;
