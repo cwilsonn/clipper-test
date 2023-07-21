@@ -99,6 +99,7 @@ app.get('/', (req, res) => {
 
     // Test response for now - this should be replaced with a status code based on the response from the shell script. Either 200 and a success message or 500 and an error message.
     // Response schema should include the status and message properties with their corresponding values.
+    res.header('Access-Control-Allow-Origin', '*');
     res.json({
         message: 'Clipper route',
         cam,
