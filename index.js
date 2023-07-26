@@ -93,15 +93,7 @@ app.get('/', (req, res) => {
     // Execute shell script for clipper
     // TODO@Peter - this is where you need to ensure your shell code is working correctly
     try {
-        shell.exec(
-            'node cli.js -c 5 -o /home/peter/uploads/'
-            + filename
-            + `https://switchboard.ipostsports.net:8443/live/${cam}/index.m3u8; curl --location https://media-prod.ipostsports.net:3001 --form file=@"/home/peter/uploads/"`
-            + filename
-            + ' --form id="'
-            + ath_id +
-            '" --form title="" --form category="N" --form authToken="MH5QlMiZ5A6Udmw" --form ipost="N"'
-        );
+        shell.exec('node cli.js -c 5 -o /home/peter/uploads/' + filename + ' https://switchboard.ipostsports.net:8443/live/' + cam + '/index.m3u8; curl --location https://media-prod.ipostsports.net:3001 --form file=@"/home/peter/uploads/"' + filename + ' --form id="'+ id +'" --form title="" --form category="N" --form authToken="MH5QlMiZ5A6Udmw" --form ipost="N"');
 
         res.json({ message: 'ok' });
     } catch (error) {
